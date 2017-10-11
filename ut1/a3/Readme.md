@@ -4,9 +4,11 @@ Vamos a configurar 4 sitios web (virtual hosts) en nuestro servidor web Nginx.
 
 ## Sitio web 1
 
+### Parte 1
+
 Vamos a mostrar una página con la imagen de "Diagrama de unidades de trabajo"
 
-Primero vamos al fichero que hay en **sites-available** de imw y lo modificamos para que nos salga el contenido que hay en la carpeta que hemos creado **/mec** situada en el directorio imw.
+Primero vamos a crear un fichero llamado imw en **sites-available**  y lo modificamos para que nos salga el contenido que hay en la carpeta. Luego creamos el enlace simbolico en **sites-enabled** y actualizamos **"sudo systemctl restart nginx"**.
 
 ![img](img/imagen1.png)
 
@@ -14,7 +16,7 @@ Nos bajamos la imagen en la máquina real y luego la movemos a la máquina de pr
 
 ![img](img/imagen3.png)
 
-Creamos el index.html dentro de **mec** para visualizar la img.
+Creamos el index.html dentro de **imw** para visualizar la img.
 
 ![img](img/imagen4.png)
 
@@ -26,9 +28,15 @@ Vemos que la imagen se nos ve perfectamente.
 
 ![img](img/imagen7.png)
 
+### Parte 2
+
 Ahora vamos mostrar una página con un enlace al Real decreto del título de Administración de Sistemas Informáticos.
 
-Nos bajamos en la máquina real el pdf y luego lo pasamos a la máquina de producción con el comando **scp** :
+Creamos el directorio **/mec** situandolo en el directorio imw y añadimos un location en el fichero **imw** en **sites-available**  y luego actualizamos **"sudo systemctl restart nginx"**.
+
+![img](img/imagen1.png)
+
+Nos bajamos en la máquina real el pdf y luego lo pasamos a la máquina de producción con el comando **scp**  en el directorio **/imw/mec** :
 
 ![img](img/imagen8.png)
 
@@ -46,13 +54,13 @@ Aqui nos muestra el enlace al fichero pdf :
 
 ## Sitio web 2
 
-Vamos mostrar ahora el listado de ficheros y directorios de /var/lib de la máquina de producción.
+Vamos mostrar ahora el listado de ficheros y directorios de **/var/lib** de la máquina de producción.
 
-Para eso creamos el siguiente fichero varlib en sites-available hacemos el enlace simbólico y actualizamos:   
+Para eso creamos el siguiente fichero **varlib** en **sites-available** hacemos el enlace simbólico en **sites-enabled** y actualizamos:   
 
 ![img](img/imagen11.png)
 
-Como podemos ver nos sale toda la información del directorio de /var/lib
+Como podemos ver nos sale toda la información del directorio de **/var/lib**
 
 ![img](img/imagen12.png)
 
@@ -68,10 +76,13 @@ Vamos al archivo **ssl** en **sites-available** y añadimos la config para stude
 
 ![img](img/imagen23.png)
 
-Creamos el fichero .htpasswd usando el siguiente comando:
+Creamos el fichero **.htpasswd** en el directorio /students usando los siguientes comandos :
+
+Para encriptar la contraseña "aula108"
+
 **perl -le 'print crypt("aula108", "salt-hash")'**
 
-y echo **"usuario1:saePqpXJa/sVk" > .htpasswd**
+ echo **"usuario1:saePqpXJa/sVk" > .htpasswd**
 
 ![img](img/imagen26.png)
 
@@ -113,7 +124,7 @@ Movemos el contenido de initializr de la máquina real a la máquina de producci
 
 ![img](img/imagen14.png)
 
-Creamos el dirrectorio redirect en /var/log/nginx para tener estas rutas :
+Creamos el directorio redirect en /var/log/nginx para tener estas rutas :
 
     /var/log/nginx/redirect/access.log
     /var/log/nginx/redirect/error.log
@@ -123,7 +134,7 @@ Creamos el dirrectorio redirect en /var/log/nginx para tener estas rutas :
 
 ![img](img/imagen18.png)
 
-Entramos en el dominio http://redirect.alu5627.me y vemos que nos redirreciona a http://target.alu5627.me
+Entramos en el dominio http://redirect.alu5627.me y vemos que nos redirecciona a http://target.alu5627.me
 
 ![img](img/imagen22.png)
 

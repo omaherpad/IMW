@@ -134,7 +134,7 @@ Creamos el directorio redirect en /var/log/nginx para tener estas rutas :
 
 ![img](img/imagen18.png)
 
-Entramos en el dominio http://redirect.alu5627.me y vemos que nos redirecciona a http://target.alu5627.me
+Entramos en el dominio http://redirect.alu5627.me y vemos que nos redirecciona a http://target.alu5627.me 
 
 ![img](img/imagen22.png)
 

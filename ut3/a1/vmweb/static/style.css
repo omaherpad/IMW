@@ -1,0 +1,48 @@
+body { 
+color : ; 
+margin : 0px 0px 20px 0px;   
+}
+
+table {
+border: 5px; 
+margin: 10px;
+border-radius: 10px;
+
+}
+
+td.status {
+background-color:  orange; 
+border-radius: 4px;    
+}
+
+tr.ram {
+background-color: lightgrey;
+border-radius: 10px;  
+}
+
+tr.cpu {
+    background-color: lightyellow; 
+}
+
+tr.hdd {
+background-color: lightgrey;    
+}
+
+tr.primero {
+background-color : lightblue;
+}
+
+h1 {
+    color: black;
+
+}
+
+h2 {
+
+    color: blue;
+}
+
+a {
+    color: green;
+}
+

@@ -30,7 +30,7 @@
         
         <a href="/run_process">Lanzar proceso</a>
         <br>
-            {% for proc in vmachine.proc %}
+            {% for proc in vmachine.get_processes() %}
             <table border="1">    
             <tr class="primero"><td>Proceso {{ proc.pid }} </td></tr> 
             <tr><td>Ram: {{ proc.ram }}GB | CPU: {{proc.cpu}}Ghz | HDD: {{proc.hdd}}MB </td></tr>
